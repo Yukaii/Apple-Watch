@@ -1,0 +1,6 @@
+- @news.each do |news|
+  h2= news.title
+  = link_to '原文網址', news.url
+  br
+  = news.content.html_safe
+  = news.author

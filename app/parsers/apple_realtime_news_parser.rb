@@ -10,12 +10,17 @@ module AppleRealtimeNewsParser
       news_urls = page.css('.rtddd li a').map {|d| "#{base_url}#{URI.encode(d[:href])}"}
       news_urls.each do |news_url|
         news = News.find_or_create_by(url: news_url)
-        if news.content.nil?
+        if news.content.nil? || news.title.nil?
           # parse and save content
           page = Nokogiri::HTML(RestClient.get news.url)
+
           summary = page.css("#summary")
           summary.search('br').each {|d| d.replace("\n")}
-          content = summary.text
+          news.content = summary.text.gsub(/\n/, "<br/>")
+
+          news.title = page.css('#h1').text
+
+          news.save!
         end
       end
     end
