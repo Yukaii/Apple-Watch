@@ -13,6 +13,9 @@ class News < ActiveRecord::Base
 
         self.author.strip! if self.author
         self.report_type.strip! if self.report_type
+
+        self.author = nil if self.author.length > 20
+        self.report_type = nil if self.report_type.length > 20
       end
     end
   end
