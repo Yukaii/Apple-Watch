@@ -8,6 +8,7 @@ class CreateNews < ActiveRecord::Migration
       t.text    :content
       t.integer :category_id
       t.date    :published_at
+      t.integer :popularity
 
       t.timestamps null: false
     end

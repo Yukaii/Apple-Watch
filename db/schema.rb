@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150423071445) do
     t.text     "content"
     t.integer  "category_id"
     t.date     "published_at"
+    t.integer  "popularity"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
