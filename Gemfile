@@ -39,8 +39,14 @@ gem 'awesome_print', :require => false
 gem "hirb", :require => false
 gem "hirb-unicode", :require => false
 
+gem 'kaminari'
+
+# gem for parsers
 gem 'rest-client'
 gem 'nokogiri'
+
+# task runner gem
+gem 'whenever', :require => false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
