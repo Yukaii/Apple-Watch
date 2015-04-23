@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20150423071445) do
     t.string   "title"
     t.string   "url"
     t.string   "author"
+    t.string   "report_type"
     t.text     "content"
     t.integer  "category_id"
     t.date     "published_at"
@@ -24,6 +25,7 @@ ActiveRecord::Schema.define(version: 20150423071445) do
     t.datetime "updated_at",   null: false
   end
 
+  add_index "news", ["author"], name: "index_news_on_author"
   add_index "news", ["url"], name: "index_news_on_url"
 
 end

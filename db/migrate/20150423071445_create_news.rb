@@ -4,6 +4,7 @@ class CreateNews < ActiveRecord::Migration
       t.string  :title
       t.string  :url
       t.string  :author
+      t.string  :report_type
       t.text    :content
       t.integer :category_id
       t.date    :published_at
@@ -11,5 +12,6 @@ class CreateNews < ActiveRecord::Migration
       t.timestamps null: false
     end
     add_index :news, :url
+    add_index :news, :author
   end
 end
