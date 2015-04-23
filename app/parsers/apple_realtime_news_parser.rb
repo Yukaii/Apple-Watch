@@ -17,6 +17,7 @@ module AppleRealtimeNewsParser
           summary = page.css("#summary")
           summary.search('br').each {|d| d.replace("\n")}
           news.content = summary.text.gsub(/\n/, "<br/>")
+          # news.content = summary.to_html.html_safe
 
           news.title = page.css('#h1').text
 
