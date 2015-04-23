@@ -20,6 +20,6 @@
 # Learn more: http://github.com/javan/whenever
 
 # Parse AppleDaily Realtime News per 15 minutes
-every 15.minutes do
-  runner "AppleRealtimeNewsParser.parse_news_list(1...5)"
-end
+# every 15.minutes do
+#   runner "AppleRealtimeNewsParser.parse_news_list(1...5)"
+# end

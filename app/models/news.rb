@@ -6,7 +6,7 @@ class News < ActiveRecord::Base
 
   def save_author
     if !self.content.nil? && self.author.nil?
-      match_data = self.content.match(/[(|（](?<author>.+)[\/|／](?<report_type>.+)[）|)]/)
+      match_data = self.content.match(/[(|（](?<author>.+)[\/|／|╱](?<report_type>.+)[）|)]/)
       if !!match_data
         self.author = match_data[:author]
         self.report_type = match_data[:report_type]

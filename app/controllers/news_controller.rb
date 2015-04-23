@@ -7,4 +7,10 @@ class NewsController < ApplicationController
     @news = News.shiyijei.page(params[:page])
     render 'index'
   end
+
+  def run_parse_task
+    if params[:token] == ENV["TASK_TOKEN"]
+      AppleRealtimeNewsParser.parse_news_list(1...6)
+    end
+  end
 end
