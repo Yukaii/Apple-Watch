@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150423071445) do
+ActiveRecord::Schema.define(version: 20150424021325) do
 
   create_table "news", force: :cascade do |t|
     t.string   "title"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20150423071445) do
     t.string   "report_type"
     t.text     "content"
     t.integer  "category_id"
-    t.date     "published_at"
+    t.datetime "published_at"
     t.integer  "popularity"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
