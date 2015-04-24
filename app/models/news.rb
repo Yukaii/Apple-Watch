@@ -20,4 +20,16 @@ class News < ActiveRecord::Base
       end
     end
   end
+
+  def update_popularity(page)
+    match = page.css('.urcc').text.match(/人氣\((?<popularity>\d+)\)/)
+    self.popularity = match[:popularity].to_i if !!match
+  end
+
+  def load_page
+    if self.url
+      return Nokogiri::HTML(RestClient.get self.url)
+    end
+    nil
+  end
 end

@@ -36,6 +36,7 @@ module AppleRealtimeNewsParser
           # published date
           news.published_at = DateTime.strptime("#{date} #{times[index]}", "%Y / %m / %d %H:%M")
 
+          news.update_popularity(page)
         end
         news.save!
       end
