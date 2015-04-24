@@ -17,7 +17,6 @@ class News < ActiveRecord::Base
 
         self.author = nil if self.author.length > 20
         self.report_type = nil if self.report_type.length > 20
-        save!
       end
     end
   end
