@@ -1,10 +1,18 @@
-- @news.each do |news|
-  h2= news.title
-  = link_to '原文網址', news.url
-  br
-  = news.author
-  br
-  br
-  = news.content.html_safe
+= render 'partials/navbar'
 
-= paginate @news
+.container-fluid
+.row
+  .col-md-3
+  .col-md-6
+    - @news.each do |news|
+      h2= news.title
+      = link_to '原文網址', news.url
+      br
+      = news.author
+      br
+      br
+      - if news.content
+        = news.content.html_safe
+
+    = paginate @news, :outer_window => 3
+  .col-md-3
