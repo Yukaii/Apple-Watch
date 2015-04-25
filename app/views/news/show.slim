@@ -1,0 +1,8 @@
+= render 'partials/navbar'
+
+.container-fluid
+  .row
+    .col-md-3
+    .col-md-6
+      = render partial: 'partials/post', object: @news, as: :news
+    .col-md-3

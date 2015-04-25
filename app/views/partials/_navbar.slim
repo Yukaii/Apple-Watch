@@ -3,11 +3,11 @@
   .col-md-8
     nav.navbar.navbar-default
       navbar-header
-        = link_to '我愛施旖婕', '/', :class => "navbar-brand"
+        = link_to '我愛施旖婕', root_path, :class => "navbar-brand"
       .collapse.navbar-collapse
         ul.nav.navbar-nav
           li
-            = link_to '首頁', '/'
+            = link_to '首頁', root_path
           li
-            = link_to '全部新聞', '/all'
+            = link_to '全部新聞', news_index_path
   .col-md-2
