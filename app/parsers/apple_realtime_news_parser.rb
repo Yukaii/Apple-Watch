@@ -36,10 +36,39 @@ module AppleRealtimeNewsParser
           # published date
           news.published_at = DateTime.strptime("#{date} #{times[index]}", "%Y / %m / %d %H:%M")
 
-          news.update_popularity(page)
+          # update popularity
+          match = page.css('.urcc').text.match(/人氣\((?<popularity>\d+)\)/)
+          news.popularity = match[:popularity].to_i if !!match
+
+          # parse author
+          parse_author(news)
         end
         news.save!
       end
+    end
+
+    def parse_author(news)
+      if news.content && news.author.nil?
+        content = news.content.gsub(/<br(\s*\/)?>/, '')
+        scan_datas = content.reverse.scan(/[）|)](?<author>.*?)[\/|／|╱](?<report_type>.*?)[(|（]/)
+        if scan_datas.count > 0
+          news.author = scan_datas.first[1].reverse
+          news.report_type = scan_datas.first[0].reverse
+
+          news.author.strip! if news.author
+          news.report_type.strip! if news.report_type
+
+          news.author = nil if news.author.length > 20
+          news.report_type = nil if news.report_type.length > 20
+        end
+      end
+    end
+
+    def update_popularity(news)
+      page = Nokogiri::HTML(RestClient.get news.url)
+      match = page.css('.urcc').text.match(/人氣\((?<popularity>\d+)\)/)
+      news.popularity = match[:popularity].to_i if !!match
+      news.save!
     end
   end
 end
