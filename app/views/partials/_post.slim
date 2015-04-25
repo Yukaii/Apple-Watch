@@ -1,0 +1,12 @@
+h2= link_to news.title, news_path(news)
+.panel.panel-default
+  .panel-heading
+    = "#{news.author}"
+
+  .panel-body
+    - if news.content
+      = news.content.html_safe
+  .panel-footer
+    .container
+      = "#{news.published_at.strftime("%Y-%m-%d")} "
+      = link_to '原文網址', news.url

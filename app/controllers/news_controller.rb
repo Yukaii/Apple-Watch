@@ -14,4 +14,8 @@ class NewsController < ApplicationController
     end
     render(json: { status: "done" }, status: 200)
   end
+
+  def show
+    @news = News.find(params[:id])
+  end
 end

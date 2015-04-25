@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root 'news#shiyijei'
 
-  get 'all' => 'news#index'
+  resources :news, :only => [:index, :show]
   get 'runtask' => 'news#run_parse_task'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
