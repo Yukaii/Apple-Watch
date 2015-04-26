@@ -1,12 +1,3 @@
-= render 'partials/navbar'
-
-.container-fluid
-  .row
-    .col-md-3
-    .col-md-6
-      = render 'partials/fb_like'
-      h1= @title
-      = render partial: 'partials/post', collection: @news, as: :news
-      = paginate @news, :outer_window => 3
-      = render 'partials/fb_page_like'
-    .col-md-3
+h1= @title
+= render partial: 'partials/post', collection: @news, as: :news
+= paginate @news, :outer_window => 3

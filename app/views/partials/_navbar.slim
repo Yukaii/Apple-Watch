@@ -1,8 +1,7 @@
 .container-fluid
-  .col-md-2
-  .col-md-8
+  .col-md-8.col-md-offset-2
     nav.navbar.navbar-default
-      navbar-header
+      navbar-header.col-xs-12
         = link_to '我愛施旖婕', root_path, :class => "navbar-brand"
       .navbar-left.navbar-collapse
         ul.nav.navbar-nav
@@ -12,4 +11,3 @@
             = link_to '每日的旖婕', '/today'
           li
             = link_to '全部新聞', news_index_path
-  .col-md-2

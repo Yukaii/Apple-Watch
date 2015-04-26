@@ -1,0 +1,21 @@
+doctype html
+html
+  meta content="width=device-width, initial-scale=1" name="viewport"
+  head
+    title 我愛施旖婕
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body
+    = render_facebook_js_sdk
+    = render 'partials/navbar'
+    .container-fluid
+      .row
+        .col-md-8.col-md-offset-2.col-xs-10.col-xs-offset-1
+          = render 'partials/fb_like'
+          = yield
+      .row.footer
+        .col-md-4.col-xs-12
+          = render 'partials/fb_page_like'
+        .col-md-4.col-xs-12
+        .col-md-4.col-xs-12

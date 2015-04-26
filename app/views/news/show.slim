@@ -1,10 +1,1 @@
-= render 'partials/navbar'
-
-.container-fluid
-  .row
-    .col-md-3
-    .col-md-6
-      = render 'partials/fb_like'
-      = render partial: 'partials/post', object: @news, as: :news
-      = render 'partials/fb_page_like'
-    .col-md-3
+= render partial: 'partials/post', object: @news, as: :news
