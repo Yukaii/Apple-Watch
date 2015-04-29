@@ -20,7 +20,7 @@ module AppleRealtimeNewsParser
 
     def parse_news_urls(news_urls, date, times)
       news_urls.each_with_index do |news_url, index|
-        news = News.find_or_create_by(url: news_url)
+        news = News.find_or_initialize_by(url: news_url)
         if news.content.nil? || news.title.nil?
           # parse page and save content
           page = Nokogiri::HTML(RestClient.get news.url)
