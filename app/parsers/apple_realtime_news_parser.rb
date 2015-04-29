@@ -42,6 +42,10 @@ module AppleRealtimeNewsParser
 
           # parse author
           parse_author(news)
+
+          # parse image
+          images = page.css('.lbimg img')
+          news.image_url = images.first[:src] if not images.empty?
         end
         news.save!
       end
