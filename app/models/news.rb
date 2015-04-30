@@ -22,6 +22,7 @@ class News < ActiveRecord::Base
       "https://graph.facebook.com/v2.3/#{ENV['FB_PAGE_ID']}/feed?access_token=#{ENV['FB_ACCESS_TOKEN']}", data
     ) {|response, request, result, &block|
       Rails.logger.debug(response)
+      Rails.logger.debug(result)
     }
     self.shared_at = DateTime.now
     self.save!
