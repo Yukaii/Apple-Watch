@@ -23,29 +23,33 @@ module AppleRealtimeNewsParser
         news = News.find_or_initialize_by(url: news_url)
         if news.content.nil? || news.title.nil?
           # parse page and save content
-          page = Nokogiri::HTML(RestClient.get news.url)
+          begin
+            page = Nokogiri::HTML(RestClient.get news.url)
 
-          # parse summary
-          summary = page.css("#summary")
-          summary.search('br').each {|d| d.replace("\n")}
-          news.content = summary.text.gsub(/\n/, "<br/>")
-          # news.content = summary.to_html.html_safe
+            # parse summary
+            summary = page.css("#summary")
+            summary.search('br').each {|d| d.replace("\n")}
+            news.content = summary.text.gsub(/\n/, "<br/>")
+            # news.content = summary.to_html.html_safe
 
-          # parse title
-          news.title = page.css('#h1').text
-          # published date
-          news.published_at = DateTime.strptime("#{date} #{times[index]}", "%Y / %m / %d %H:%M")
+            # parse title
+            news.title = page.css('#h1').text
+            # published date
+            news.published_at = DateTime.strptime("#{date} #{times[index]}", "%Y / %m / %d %H:%M")
 
-          # update popularity
-          match = page.css('.urcc').text.match(/人氣\((?<popularity>\d+)\)/)
-          news.popularity = match[:popularity].to_i if !!match
+            # update popularity
+            match = page.css('.urcc').text.match(/人氣\((?<popularity>\d+)\)/)
+            news.popularity = match[:popularity].to_i if !!match
 
-          # parse author
-          parse_author(news)
+            # parse author
+            parse_author(news)
 
-          # parse image
-          images = page.css('.lbimg img')
-          news.image_url = images.first[:src] if not images.empty?
+            # parse image
+            images = page.css('.lbimg img')
+            news.image_url = images.first[:src] if not images.empty?
+          rescue Exception => e
+
+          end
         end
         news.save!
       end
