@@ -19,3 +19,16 @@
 .panel-body {
   font-size: 18px;
 }
+
+.fb_iframe_widget {
+  width: 100% !important;
+
+  iframe {
+    width: 100% !important;
+  }
+
+  span {
+    width: 100% !important;
+  }
+}
+
