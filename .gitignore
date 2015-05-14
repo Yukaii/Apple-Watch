@@ -18,6 +18,7 @@
 
 # dotenv
 .env
+env
 
 # vendor
 /vendor
