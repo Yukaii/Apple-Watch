@@ -1,12 +1,17 @@
-h2= link_to news.title, news_path(news)
 .panel.panel-default
-  .panel-heading
-    = "#{news.author}"
-
   .panel-body
-    - if news.content
-      = news.content.html_safe
+    h2= link_to news.title, news_path(news)
+    .news-content
+      - if news.content
+        = news.content.html_safe
   .panel-footer
     .container
-      = render_published_date(news)
-      = link_to '原文網址', news.url
+      .tag-group
+        span.octicon.octicon-heart
+        = "#{news.author}"
+      .tag-group
+        span.octicon.octicon-book
+        = render_published_date(news)
+      .tag-group
+        span.octicon.octicon-link-external
+        = link_to '原文網址', news.url, target: "_blank"

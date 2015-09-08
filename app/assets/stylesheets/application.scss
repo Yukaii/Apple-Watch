@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require sprockets-octicons
  *= require_tree .
  *= require_self
  */
@@ -20,15 +21,15 @@
   font-size: 18px;
 }
 
-.fb_iframe_widget {
-  width: 100% !important;
+// .fb_iframe_widget {
+//   width: 100% !important;
 
-  iframe {
-    width: 100% !important;
-  }
+//   iframe {
+//     width: 100% !important;
+//   }
 
-  span {
-    width: 100% !important;
-  }
-}
+//   span {
+//     width: 100% !important;
+//   }
+// }
 

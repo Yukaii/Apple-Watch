@@ -1,13 +1,14 @@
-.container-fluid
-  .col-md-8.col-md-offset-2
-    nav.navbar.navbar-default
-      navbar-header.col-xs-12
-        = link_to '我愛施旖婕', root_path, :class => "navbar-brand"
-      .navbar-left.navbar-collapse
-        ul.nav.navbar-nav
-          li
-            = link_to '首頁', root_path
-          li
-            = link_to '每日的旖婕', '/today'
-          li
-            = link_to '全部新聞', news_index_path
+nav.navbar.navbar-default#main-navbar
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle.collapsed aria-expanded="false" data-target="#navbar-collapse-1" data-toggle="collapse" type="button"
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand href=root_path 綜合外電施旖婕
+
+    #navbar-collapse-1.collapse.navbar-collapse
+      ul.nav.navbar-nav
+        li= link_to '首頁', root_path
+        li= link_to '每日的旖婕', today_news_path
+        li= link_to '全部新聞', news_index_path

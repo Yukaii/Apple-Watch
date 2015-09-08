@@ -1,12 +1,12 @@
 class NewsController < ApplicationController
   def index
     @news = News.all.page(params[:page])
-    @title = "全部新聞"
+    @headline = "全部新聞"
   end
 
   def shiyijei
     @news = News.shiyijei.page(params[:page])
-    @title = "旖婕的貼文❤️"
+    @headline = "旖婕的貼文"
     render 'index'
   end
 
@@ -19,11 +19,12 @@ class NewsController < ApplicationController
 
   def show
     @news = News.find(params[:id])
+    @title = "41J | #{@news.title}"
   end
 
   def today
     @news = News.today.shiyijei.page(params[:page])
-    @title = "每日的旖婕❤️"
+    @headline = "每日的旖婕"
     render 'index'
   end
 end
