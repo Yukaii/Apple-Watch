@@ -6,7 +6,11 @@ module AppleRealtimeNewsParser
   class << self
     def parse_news_list(page_count = 1)
       base_url = "http://www.appledaily.com.tw"
-      page = Nokogiri::HTML(RestClient.get "http://www.appledaily.com.tw/realtimenews/section/new/#{page_count}")
+      begin
+        page = Nokogiri::HTML(RestClient.get "http://www.appledaily.com.tw/realtimenews/section/new/#{page_count}")
+      rescue Exception => e
+        return
+      end
 
       # deal with cross-day condition
       dates = page.css('h1.dddd time').map(&:text)
