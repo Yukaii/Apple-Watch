@@ -13,7 +13,9 @@ html
     .container-fluid
       = render 'partials/navbar'
       .row
+        .girl-photo.visible-lg-block
         .center-block.news-container
           = render 'partials/fb_like'
           = yield
           = render 'partials/fb_page_like'
+        .girl-photo.right.visible-lg-block

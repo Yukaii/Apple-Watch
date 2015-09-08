@@ -19,3 +19,24 @@
   max-width: 60em;
   padding: 0 1em;
 }
+
+.girl-photo {
+  background-image: image_url('silhouette-pose-9-1429137.png');
+    height: 493px;
+    position: fixed;
+    width: 221px;
+    background-size: cover;
+    z-index: -10;
+    top: 5em;
+
+}
+
+.girl-photo.right {
+  @extend .girl-photo;
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  position: fixed;
+  right: 0;
+}
