@@ -10,12 +10,12 @@ html
   body
     = render 'partials/ga'
     = render_facebook_js_sdk
-    .container-fluid
+    .container-fluid.news-container
       = render 'partials/navbar'
       .row
         .girl-photo.visible-lg-block
-        .center-block.news-container
+        .girl-photo.right.visible-lg-block
+        .center-block.news-block
           = render 'partials/fb_like'
           = yield
-          = render 'partials/fb_page_like'
-        .girl-photo.right.visible-lg-block
+    = render 'partials/footer'
