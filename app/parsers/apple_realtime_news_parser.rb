@@ -35,7 +35,7 @@ module AppleRealtimeNewsParser
             # parse title
             news.title = page.css('#h1').text
             # published date
-            news.published_at = DateTime.strptime("#{date} #{times[index]}", "%Y / %m / %d %H:%M")
+            news.published_at = DateTime.strptime("#{date} #{times[index]} +8", "%Y / %m / %d %H:%M %z")
 
             # update popularity
             match = page.css('.urcc').text.match(/人氣\((?<popularity>\d+)\)/)
