@@ -1,4 +1,6 @@
-.panel.panel-default
+.news-post.panel.panel-default
+  .panel-header.feature-image-container
+    = news.image_url && image_tag(news.image_url, :class => 'feature-image')
   .panel-body
     h2= link_to news.title, news_path(news)
     .news-content

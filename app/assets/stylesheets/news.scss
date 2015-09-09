@@ -14,6 +14,10 @@ html, body {
   margin-right: 1em;
 }
 
+.news-post {
+  margin-top: 1em;
+}
+
 .news-container {
   min-height: 100%;
 
@@ -37,6 +41,18 @@ html, body {
   max-width: 60em;
   padding: 0 1em;
   z-index: 12;
+
+  h2 a {
+    text-decoration: none;
+    color: dimgrey;
+  }
+}
+
+.feature-image-container {
+  max-width: 58em;
+}
+img.feature-image {
+  width: 100%;
 }
 
 .girl-photo {

@@ -20,6 +20,7 @@ class NewsController < ApplicationController
   def show
     @news = News.find(params[:id])
     @title = "41J | #{@news.title}"
+    @og_image = @news.image_url
   end
 
   def today

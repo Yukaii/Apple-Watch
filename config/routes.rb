@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :news, :only => [:index, :show]
   get 'today' => 'news#today', as: :today_news
   get 'runtask' => 'news#run_parse_task'
+
+  get 'about' => 'pages#about', as: :about
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -1,8 +1,12 @@
 doctype html
 html
-  meta content="width=device-width, initial-scale=1" name="viewport"
   head
+    meta content="width=device-width, initial-scale=1" name="viewport"
     meta content="F9OTp5-KeREpLoOjjg52aGCWt1JpA3BWWmdIMlDc2Wo" name="google-site-verification"
+    meta property="og:title" content="#{@title || "綜合外電施旖婕"}"
+    meta property="og:type" content="website"
+    meta property="og:image" content="#{@og_image || "http://i.imgur.com/q0JpWQ6.jpg"}"
+    meta property="og:site_name" content="綜合外電施旖婕"
     title= @title || "綜合外電施旖婕"
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
