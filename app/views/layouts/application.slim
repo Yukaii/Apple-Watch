@@ -7,14 +7,19 @@ html
     meta property="og:type" content="website"
     meta property="og:image" content="#{@og_image || "http://i.imgur.com/q0JpWQ6.jpg"}"
     meta property="og:site_name" content="綜合外電施旖婕"
+
+    meta itemprop="name" content="#{@title || "綜合外電施旖婕"}"
+    meta itemprop="image" content="#{@og_image || "http://i.imgur.com/q0JpWQ6.jpg"}"
+
     title= @title || "綜合外電施旖婕"
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
+    = render 'partials/metadata'
   body
     = render 'partials/ga'
     = render_facebook_js_sdk
-    .container-fluid.news-container
+    .container-fluid.news-container itemscope="" itemtype="https://schema.org/WebSite"
       = render 'partials/navbar'
       .row
         .girl-photo.visible-lg-block
