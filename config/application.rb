@@ -32,6 +32,7 @@ module IWatch
 
     config.active_record.observers = :news_observer
 
+    config.middleware.use Rack::Deflater
     # config.middleware.use Rack::GoogleAnalytics, :tracker => 'UA-49526118-4'
   end
 end
