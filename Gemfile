@@ -41,6 +41,7 @@ gem "hirb-unicode", :require => false
 gem 'kaminari'
 
 # gem for parsers
+gem 'httpclient'
 gem 'rest-client'
 gem 'nokogiri'
 

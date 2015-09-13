@@ -1,13 +1,20 @@
 require 'nokogiri'
 require 'rest-client'
+require 'httpclient'
 require 'uri'
+require 'thread'
+require 'thwait'
 
 module AppleRealtimeNewsParser
   class << self
+    def http_client
+      @clnt ||= HTTPClient.new
+    end
+
     def parse_news_list(page_count = 1)
       base_url = "http://www.appledaily.com.tw"
       begin
-        page = Nokogiri::HTML(RestClient.get "http://www.appledaily.com.tw/realtimenews/section/new/#{page_count}")
+        page = Nokogiri::HTML(http_client.get_content "http://www.appledaily.com.tw/realtimenews/section/new/#{page_count}")
       rescue Exception => e
         return
       end
@@ -28,7 +35,7 @@ module AppleRealtimeNewsParser
         if news.content.nil? || news.title.nil?
           # parse page and save content
           begin
-            page = Nokogiri::HTML(RestClient.get news.url)
+            page = Nokogiri::HTML(http_client.get_content news.url)
 
             # parse summary
             summary = page.css("#summary")
@@ -77,7 +84,7 @@ module AppleRealtimeNewsParser
     end
 
     def update_popularity(news)
-      page = Nokogiri::HTML(RestClient.get news.url)
+      page = Nokogiri::HTML(http_client.get_content news.url)
       match = page.css('.urcc').text.match(/人氣\((?<popularity>\d+)\)/)
       news.popularity = match[:popularity].to_i if !!match
       news.save!

@@ -97,6 +97,7 @@ GEM
       hirb (~> 0.5)
       unicode-display_width (~> 0.1.1)
     hitimes (1.2.2)
+    httpclient (2.6.0.1)
     i18n (0.7.0)
     jbuilder (2.2.13)
       activesupport (>= 3.0.0, < 5)
@@ -264,6 +265,7 @@ DEPENDENCIES
   guard-rspec
   hirb
   hirb-unicode
+  httpclient
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
