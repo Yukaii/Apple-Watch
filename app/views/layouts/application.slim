@@ -3,6 +3,7 @@ html
   head
     meta content="width=device-width, initial-scale=1" name="viewport"
     meta content="F9OTp5-KeREpLoOjjg52aGCWt1JpA3BWWmdIMlDc2Wo" name="google-site-verification"
+    meta property="op:markup_version" content="v1.0"
     meta property="og:title" content="#{@title || "綜合外電施旖婕"}"
     meta property="og:type" content="website"
     meta property="og:image" content="#{@og_image || "http://i.imgur.com/q0JpWQ6.jpg"}"
@@ -10,6 +11,7 @@ html
 
     meta itemprop="name" content="#{@title || "綜合外電施旖婕"}"
     meta itemprop="image" content="#{@og_image || "http://i.imgur.com/q0JpWQ6.jpg"}"
+    link rel="canonical" href=request.original_url
 
     title= @title || "綜合外電施旖婕"
     = stylesheet_link_tag    'application', media: 'all'
