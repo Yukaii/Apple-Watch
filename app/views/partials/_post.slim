@@ -1,26 +1,30 @@
-artitle
-  .news-post.panel.panel-default itemscope="" itemtype="https://schema.org/NewsArticle"
-    header
-      .panel-header.feature-image-container
-        figure
-          = news.image_url && image_tag(news.image_url, :class => 'feature-image', :itemprop => "image")
-    .panel-body
-      meta itemprop="headline" content=news.title
-      h1 = link_to news.title, news_path(news)
-      p.news-content
-        - if news.content
-          = news.content.html_safe
-    .panel-footer
-      .container
-        .tag-group
-          span.octicon.octicon-heart
-          span itemprop="author"
-            = news.author
-        .tag-group
-          span.octicon.octicon-book
-          time class="op-published" dateTime=render_published_timestamp(news)
-            span itemprop="datePublished" content=render_published_date(news).strip
-              = render_published_date(news)
-        .tag-group
-          span.octicon.octicon-link-external
-          = link_to '原文網址', news.url, target: "_blank"
+= render partial: 'partials/header', locals: { cover_url: news.image_url, news_title: news.title }
+.container
+  .row
+    .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+      artitle
+        .news-post.panel.panel-default itemscope="" itemtype="https://schema.org/NewsArticle"
+          header
+            .panel-header.feature-image-container
+              figure
+                = news.image_url && image_tag(news.image_url, :class => 'feature-image', :itemprop => "image")
+          .panel-body
+            meta itemprop="headline" content=news.title
+            h1 = link_to news.title, news_path(news)
+            p.news-content
+              - if news.content
+                = news.content.html_safe
+          .panel-footer-custom
+            .container
+              .tag-group
+                span.octicon.octicon-heart
+                span itemprop="author"
+                  = news.author
+              .tag-group
+                span.octicon.octicon-book
+                time class="op-published" dateTime=render_published_timestamp(news)
+                  span itemprop="datePublished" content=render_published_date(news).strip
+                    = render_published_date(news)
+              .tag-group
+                span.octicon.octicon-link-external
+                = link_to '原文網址', news.url, target: "_blank"

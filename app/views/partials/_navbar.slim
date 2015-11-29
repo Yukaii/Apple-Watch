@@ -1,6 +1,6 @@
-nav.navbar.navbar-inverse#main-navbar
+navbar.navbar-default.navbar-custom.navbar-fixed-top#main-navbar
   .container-fluid
-    .navbar-header
+    .navbar-header.page-scroll
       button.navbar-toggle.collapsed aria-expanded="false" data-target="#navbar-collapse-1" data-toggle="collapse" type="button"
         span.icon-bar
         span.icon-bar
@@ -8,7 +8,7 @@ nav.navbar.navbar-inverse#main-navbar
       a.navbar-brand href=root_path 綜合外電施旖婕
 
     #navbar-collapse-1.collapse.navbar-collapse
-      ul.nav.navbar-nav
+      ul.nav.navbar-nav.navbar-right
         li= link_to '首頁', root_path, itemprop: 'accessibilityFeature'
         li= link_to '每日的旖婕', today_news_path, itemprop: 'accessibilityFeature'
         li= link_to '全部新聞', news_index_path, itemprop: 'accessibilityFeature'

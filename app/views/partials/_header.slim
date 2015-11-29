@@ -1,0 +1,10 @@
+header.intro-header
+  .cover-img-container
+    .dark-image-filter= image_tag(cover_url, id: "cover-img")
+  .container
+    .row
+      .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+        .site-heading
+          h1="#{defined?(news_title) ? news_title : "綜合外電施旖婕"}"
+          hr.small
+          span.subheading="#{defined?(news_title) ? "" : "1J為您奉上最新最潮最火熱的新聞 <3"}"

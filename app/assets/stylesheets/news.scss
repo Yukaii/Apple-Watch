@@ -1,54 +1,53 @@
 // Place all the styles related to the news controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "compass/css3/filter";
+@import "compass/css3/text-shadow";
 
 html, body {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  background-color: rgb(37, 37, 37);
+  // background-color: rgb(37, 37, 37);
   padding-bottom: 2em;
 }
 
 .tag-group {
   display: inline-block;
   margin-right: 1em;
+  font-size: small;
 }
 
-.news-post {
-  margin-top: 1em;
-}
+// .news-post {
+//   margin-top: 1em;
+// }
 
-.news-container {
-  min-height: 100%;
+// .news-container {
+//   min-height: 100%;
 
-  padding-bottom: 20em;
-  background-color: #3A3A3A;
-  h1 {
-    color: #DDDDDD;
-  }
-}
+//   padding-bottom: 20em;
+//   background-color: #3A3A3A;
+//   h1 {
+//     color: #DDDDDD;
+//   }
+// }
 
-.news-content {
-  margin-top: 1.7em;
-  z-index: 10;
-}
+// .news-content {
+//   margin-top: 1.7em;
+//   z-index: 10;
+// }
 
-#main-navbar {
-  margin-top: .5em;
-}
+// .news-block {
+//   max-width: 60em;
+//   padding: 0 1em;
+//   z-index: 12;
 
-.news-block {
-  max-width: 60em;
-  padding: 0 1em;
-  z-index: 12;
-
-  h1 a {
-    text-decoration: none;
-    color: dimgrey;
-  }
-}
+//   h1 a {
+//     text-decoration: none;
+//     color: dimgrey;
+//   }
+// }
 
 .feature-image-container {
   max-width: 58em;
@@ -57,39 +56,74 @@ img.feature-image {
   width: 100%;
 }
 
-.girl-photo {
-  background-image: image_url('silhouette-pose-9-1429137.png');
-    height: 493px;
-    position: fixed;
-    width: 221px;
-    background-size: cover;
-    z-index: 5;
-    top: 5em;
-    -webkit-filter: invert(100%);
-    filter: invert(100%);
-}
+// .girl-photo {
+//   background-image: image_url('silhouette-pose-9-1429137.png');
+//     height: 493px;
+//     position: fixed;
+//     width: 221px;
+//     background-size: cover;
+//     z-index: 5;
+//     top: 5em;
+//     -webkit-filter: invert(100%);
+//     filter: invert(100%);
+// }
 
-.girl-photo.right {
-  @extend .girl-photo;
-  -moz-transform: scaleX(-1);
-  -o-transform: scaleX(-1);
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
-  position: fixed;
-  right: 0;
-}
+// .girl-photo.right {
+//   @extend .girl-photo;
+//   -moz-transform: scaleX(-1);
+//   -o-transform: scaleX(-1);
+//   -webkit-transform: scaleX(-1);
+//   transform: scaleX(-1);
+//   position: fixed;
+//   right: 0;
+// }
 
-.footer {
-  margin-top: -20em;
-  background-color: rgb(37, 37, 37);
-  z-index: 7;
-  height: 20em;
-  padding: 2em 0;
+// .footer {
+//   margin-top: -20em;
+//   background-color: rgb(37, 37, 37);
+//   z-index: 7;
+//   height: 20em;
+//   padding: 2em 0;
 
-  .footer-block {
-    max-width: 60em;
-    padding: 0 1em;
+//   .footer-block {
+//     max-width: 60em;
+//     padding: 0 1em;
+//   }
+
+// }
+
+
+.dark-image-filter {
+  width: 100%;
+  @include filter(brightness(50%) blur(2px));
+  #cover-img {
+    width: 100%;
   }
-
 }
 
+.intro-header {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 327px;
+
+  .cover-img-container {
+    position: absolute;
+    width: 100%;
+    max-height: 100%;
+  }
+}
+
+.panel-footer-custom {
+  padding: 0 15px;
+}
+
+@media screen and (max-width: 490px) {
+  .dark-image-filter {
+    #cover-img {
+      width: auto;
+      height: 100%;
+      // margin-left: -100%;
+    }
+  }
+}

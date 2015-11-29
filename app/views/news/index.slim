@@ -1,3 +1,8 @@
-h1= @headline
-= render partial: 'partials/post', collection: @news, as: :news
-= paginate @news, :outer_window => 3
+= render partial: 'partials/header', locals: { cover_url: "http://i.imgur.com/q0JpWQ6.jpg" }
+/ h1= @headline
+/ = render 'partials/fb_like'
+.container
+  .row
+    .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+      = render partial: 'partials/post_preview', collection: @news, as: :news
+      = paginate @news, :outer_window => 3

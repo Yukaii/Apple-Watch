@@ -13,9 +13,11 @@
  *= require sprockets-octicons
  *= require_tree .
  *= require_self
+ *= require bootstrap
+ *= require clean-blog
  */
-@import "bootstrap-sprockets";
-@import "bootstrap";
+
+ @import "compass";
 
 .panel-body {
   font-size: 18px;
