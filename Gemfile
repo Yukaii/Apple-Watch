@@ -57,6 +57,9 @@ gem 'rails-observers'
 
 gem 'newrelic_rpm'
 
+gem 'administrate'
+gem 'devise'
+
 # gem 'rack-google-analytics'
 
 group :development, :test do

@@ -1,24 +1,24 @@
 .post-preview
   .panel-body
-    meta itemprop="headline" content=news.title
-    h1 = link_to news.title, news_path(news)
+    meta itemprop="headline" content=article.title
+    h1 = link_to article.title, article_path(article)
     .panel-header.feature-image-container
-      = news.image_url && image_tag(news.image_url, :class => 'feature-image', :itemprop => "image")
-    p.news-content
-      - if news.content
-        = news.content.html_safe
+      = article.image_url && image_tag(article.image_url, :class => 'feature-image', :itemprop => "image")
+    p.article-content
+      - if article.content
+        = article.content.html_safe
   .panel-footer-custom
     .container
       .tag-group
         span.octicon.octicon-heart
         span itemprop="author"
-          = news.author
+          = article.author
       .tag-group
         span.octicon.octicon-book
-        time class="op-published" dateTime=render_published_timestamp(news)
-          span itemprop="datePublished" content=render_published_date(news).strip
-            = render_published_date(news)
+        time class="op-published" dateTime=render_published_timestamp(article)
+          span itemprop="datePublished" content=render_published_date(article).strip
+            = render_published_date(article)
       .tag-group
         span.octicon.octicon-link-external
-        = link_to '原文網址', news.url, target: "_blank"
+        = link_to '原文網址', article.url, target: "_blank"
 

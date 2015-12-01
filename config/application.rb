@@ -21,7 +21,7 @@ module IWatch
     # config.time_zone = 'Central Time (US & Canada)'
     config.time_zone = 8
 
-    config.assets.precompile += %w(*.svg *.eot *.woff *.ttf clean-blog.js)
+    config.assets.precompile += %w(*.svg *.eot *.woff *.ttf)
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
@@ -30,7 +30,7 @@ module IWatch
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
-    config.active_record.observers = :news_observer
+    config.active_record.observers = :article_observer
 
     config.middleware.use Rack::Deflater
     # config.middleware.use Rack::GoogleAnalytics, :tracker => 'UA-49526118-4'

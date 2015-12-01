@@ -21,5 +21,5 @@
 
 # Parse AppleDaily Realtime News per 15 minutes
 # every 15.minutes do
-#   runner "AppleRealtimeNewsParser.parse_news_list(1...5)"
+#   runner "AppleRealtimeNewsParser.parse_article_list(1...5)"
 # end

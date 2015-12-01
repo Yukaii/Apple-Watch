@@ -1,4 +1,4 @@
-class News < ActiveRecord::Base
+class Article < ActiveRecord::Base
   default_scope { order(created_at: :desc) }
   scope :shiyijei, -> { where(author: "施旖婕") }
   scope :today, -> { where('DATE(published_at) = ?', Date.today) }
@@ -10,7 +10,7 @@ class News < ActiveRecord::Base
   def shared_on_facebook
     data = {
         "message" => "\#41J機器人: #{self.title}",
-        "link" => "#{ENV['DEPLOY_DOMAIN']}#{Rails.application.routes.url_helpers.news_path(self)}",
+        "link" => "#{ENV['DEPLOY_DOMAIN']}#{Rails.application.routes.url_helpers.article_path(self)}",
         "name" => self.title,
         "description" => self.text_content,
         "caption" => "#{self.published_at && self.published_at.strftime('%F %T')} #{self.author}",

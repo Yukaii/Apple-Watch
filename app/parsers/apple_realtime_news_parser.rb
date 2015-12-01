@@ -11,7 +11,7 @@ module AppleRealtimeNewsParser
       @clnt ||= HTTPClient.new
     end
 
-    def parse_news_list(page_count = 1)
+    def parse_article_list(page_count = 1)
       base_url = "http://www.appledaily.com.tw"
       begin
         page = Nokogiri::HTML(http_client.get_content "http://www.appledaily.com.tw/realtimenews/section/new/#{page_count}")
@@ -22,72 +22,72 @@ module AppleRealtimeNewsParser
       # deal with cross-day condition
       dates = page.css('h1.dddd time').map(&:text)
 
-      page.css('ul.rtddd').each_with_index do |news_table, i|
-        news_urls = news_table.css('li a').map {|d| "#{base_url}#{URI.encode(d[:href])}" }
-        times = news_table.css('li time').map(&:text)
-        parse_news_urls(news_urls, dates[i], times)
+      page.css('ul.rtddd').each_with_index do |article_table, i|
+        article_urls = article_table.css('li a').map {|d| "#{base_url}#{URI.encode(d[:href])}" }
+        times = article_table.css('li time').map(&:text)
+        parse_article_urls(article_urls, dates[i], times)
       end
     end
 
-    def parse_news_urls(news_urls, date, times)
-      news_urls.each_with_index do |news_url, index|
-        news = News.find_or_initialize_by(url: news_url)
-        if news.content.nil? || news.title.nil?
+    def parse_article_urls(article_urls, date, times)
+      article_urls.each_with_index do |article_url, index|
+        article = Article.find_or_initialize_by(url: article_url)
+        if article.content.nil? || article.title.nil?
           # parse page and save content
           begin
-            page = Nokogiri::HTML(http_client.get_content news.url)
+            page = Nokogiri::HTML(http_client.get_content article.url)
 
             # parse summary
             summary = page.css("#summary")
             summary.search('br').each {|d| d.replace("\n")}
-            news.content = summary.text.gsub(/\n/, "<br/>")
-            # news.content = summary.to_html.html_safe
+            article.content = summary.text.gsub(/\n/, "<br/>")
+            # article.content = summary.to_html.html_safe
 
             # parse title
-            news.title = page.css('#h1').text
+            article.title = page.css('#h1').text
             # published date
-            news.published_at = DateTime.strptime("#{date} #{times[index]} +8", "%Y / %m / %d %H:%M %z")
+            article.published_at = DateTime.strptime("#{date} #{times[index]} +8", "%Y / %m / %d %H:%M %z")
 
             # update popularity
             match = page.css('.urcc').text.match(/人氣\((?<popularity>\d+)\)/)
-            news.popularity = match[:popularity].to_i if !!match
+            article.popularity = match[:popularity].to_i if !!match
 
             # parse author
-            parse_author(news)
+            parse_author(article)
 
             # parse image
             images = page.css('.lbimg img')
-            news.image_url = images.first[:src] if not images.empty?
+            article.image_url = images.first[:src] if not images.empty?
           rescue Exception => e
 
           end
         end
-        news.save!
+        article.save!
       end
     end
 
-    def parse_author(news)
-      if news.content && news.author.nil?
-        content = news.content.gsub(/<br(\s*\/)?>/, '')
+    def parse_author(article)
+      if article.content && article.author.nil?
+        content = article.content.gsub(/<br(\s*\/)?>/, '')
         scan_datas = content.reverse.scan(/[）|)](?<author>.*?)[\/|／|╱](?<report_type>.*?)[(|（]/)
         if scan_datas.count > 0
-          news.author = scan_datas.first[1].reverse
-          news.report_type = scan_datas.first[0].reverse
+          article.author = scan_datas.first[1].reverse
+          article.report_type = scan_datas.first[0].reverse
 
-          news.author.strip! if news.author
-          news.report_type.strip! if news.report_type
+          article.author.strip! if article.author
+          article.report_type.strip! if article.report_type
 
-          news.author = nil if news.author.length > 20
-          news.report_type = nil if news.report_type.length > 20
+          article.author = nil if article.author.length > 20
+          article.report_type = nil if article.report_type.length > 20
         end
       end
     end
 
-    def update_popularity(news)
-      page = Nokogiri::HTML(http_client.get_content news.url)
+    def update_popularity(article)
+      page = Nokogiri::HTML(http_client.get_content article.url)
       match = page.css('.urcc').text.match(/人氣\((?<popularity>\d+)\)/)
-      news.popularity = match[:popularity].to_i if !!match
-      news.save!
+      article.popularity = match[:popularity].to_i if !!match
+      article.save!
     end
   end
 end

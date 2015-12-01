@@ -1,16 +1,27 @@
 Rails.application.routes.draw do
+  devise_for :admin_users
+
+  namespace :admin do
+    DashboardManifest::DASHBOARDS.each do |dashboard_resource|
+      resources dashboard_resource
+    end
+
+    root controller: DashboardManifest::ROOT_DASHBOARD, action: :index
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  root 'news#shiyijei'
+  root 'articles#shiyijei'
 
-  resources :news, :only => [:index, :show]
-  get 'today' => 'news#today', as: :today_news
-  get 'runtask' => 'news#run_parse_task'
+  resources :articles, :only => [:index, :show]
 
+  get 'today' => 'articles#today', as: :today_articles
+  get 'runtask' => 'articles#run_parse_task'
   get 'about' => 'pages#about', as: :about
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -11,9 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150429140959) do
+ActiveRecord::Schema.define(version: 20151201034307) do
 
-  create_table "news", force: :cascade do |t|
+  create_table "admin_users", force: :cascade do |t|
+    t.string   "username",               default: ""
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
+  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+
+  create_table "articles", force: :cascade do |t|
     t.string   "title"
     t.string   "url"
     t.string   "author"
@@ -28,7 +47,7 @@ ActiveRecord::Schema.define(version: 20150429140959) do
     t.string   "image_url"
   end
 
-  add_index "news", ["author"], name: "index_news_on_author"
-  add_index "news", ["url"], name: "index_news_on_url"
+  add_index "articles", ["author"], name: "index_articles_on_author"
+  add_index "articles", ["url"], name: "index_articles_on_url"
 
 end
