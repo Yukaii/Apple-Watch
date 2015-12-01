@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root 'articles#shiyijei'
 
-  resources :articles, :only => [:index, :show]
+  resources :articles, :only => [:index, :show], :path => :news
 
   get 'today' => 'articles#today', as: :today_articles
   get 'runtask' => 'articles#run_parse_task'
