@@ -1,0 +1,8 @@
+doctype html
+html
+  head
+    title= @title || "Admin | 綜合外電施旖婕"
+    = csrf_meta_tags
+
+    body
+      = yield

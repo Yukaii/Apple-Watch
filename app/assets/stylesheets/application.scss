@@ -11,10 +11,8 @@
  * file per style scope.
  *
  *= require sprockets-octicons
- *= require_tree .
+ *= require_tree ./common
  *= require_self
- *= require bootstrap
- *= require clean-blog
  */
 
  @import "compass";

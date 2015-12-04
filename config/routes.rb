@@ -14,6 +14,11 @@ Rails.application.routes.draw do
   get 'runtask' => 'articles#run_parse_task'
   get 'about' => 'pages#about', as: :about
 
+  namespace :admin do
+    root 'articles#index'
+    resources :articles
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
