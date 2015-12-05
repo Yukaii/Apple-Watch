@@ -3,6 +3,7 @@ html
   head
     title= @title || "Admin | 綜合外電施旖婕"
     = csrf_meta_tags
-
+    = stylesheet_link_tag    'admin', media: 'all'
+    = javascript_include_tag 'admin'
     body
       = yield

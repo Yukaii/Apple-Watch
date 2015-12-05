@@ -1,3 +1,4 @@
 //= require jquery
 //= require jquery_ujs
-//= require administration
+//= require bootstrap.min
+//= require admin-lte
