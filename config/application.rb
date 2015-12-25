@@ -22,6 +22,7 @@ module IWatch
     config.time_zone = 8
 
     config.assets.precompile += %w(*.svg *.eot *.woff *.ttf admin.js admin.css)
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]

@@ -1,9 +1,23 @@
 /*
  *= require sprockets-octicons
- *= require bootstrap
- *= require font-awesome
- *= require ionicons
- *= require admin-lte
- *= require iCheck/all
- *= require datatables/dataTables.bootstrap
+ *= require admin-lte/bootstrap/css/bootstrap
+ *= require admin-lte/dist/css/AdminLTE
+ *= require admin-lte/dist/css/skins/skin-blue
  */
+
+.iconspan {
+  margin: 0 2px;
+}
+
+.hyphenate {
+  /* Careful, this breaks the word wherever it is without a hyphen */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+
+  /* Adds a hyphen where the word breaks */
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}

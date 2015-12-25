@@ -1,0 +1,31 @@
+.wrapper
+  = render partial: 'admin/partials/header'
+  = render partial: 'admin/partials/sidebar'
+  .content-wrapper
+    section.content-header
+      h1
+        = @article.title
+        / small 目前綜合外電上所有的文章
+      ol.breadcrumb
+        li
+          a href=admin_articles_path
+            i.fa.fa-dashboard
+            | 所有文章
+        li.active= "(#{@article.id}) #{@article.title}"
+    section.content
+      a href=edit_admin_article_path(@article)
+        .btn.btn-primary.iconspan
+          i.fa.fa-pencil-square-o
+          | 編輯
+      a href=admin_article_path(@article) data-confirm="你確定要刪除嗎?" data-method="delete"
+        .btn.btn-danger.iconspan
+          i.fa.fa-trash
+          | 刪除
+      table.table
+        - [:id, :title, :url, :author, :report_type, :content, :published_at, :popularity, :created_at, :updated_at, :shared_at, :image_url].each do |action|
+          tr
+            th= action
+            td.hyphenate= @article.send(action)
+
+  = render partial: 'admin/partials/footer'
+  = render partial: 'admin/partials/control_sidebar'

@@ -1,0 +1,116 @@
+nav.navbar.navbar-static-top role="navigation"
+  /! Sidebar toggle button
+  a.sidebar-toggle data-toggle="offcanvas" href="#" role="button"
+    span.sr-only Toggle navigation
+  /! Navbar Right Menu
+  .navbar-custom-menu
+    ul.nav.navbar-nav
+      /! Messages: style can be found in dropdown.less
+      li.dropdown.messages-menu
+        /! Menu toggle button
+        a.dropdown-toggle data-toggle="dropdown" href="#"
+          i.fa.fa-envelope-o
+          span.label.label-success 4
+        ul.dropdown-menu
+          li.header You have 4 messages
+          li
+            /! inner menu: contains the messages
+            ul.menu
+              li
+                /! start message
+                a href="#"
+                .pull-left
+                  /! User Image
+                  img.img-circle alt=("User Image") src="dist/img/user2-160x160.jpg" /
+                /! Message title and timestamp
+                h4
+                  | Support Team
+                  small
+                    i.fa.fa-clock-o
+                    | 5 mins
+                /! The message
+                p Why not buy a new awesome theme?
+              /! end message
+            /! /.menu
+          li.footer
+            a href="#"  See All Messages
+      /! /.messages-menu
+      /! Notifications Menu
+      li.dropdown.notifications-menu
+        /! Menu toggle button
+        a.dropdown-toggle data-toggle="dropdown" href="#"
+          i.fa.fa-bell-o
+          span.label.label-warning 10
+        ul.dropdown-menu
+          li.header You have 10 notifications
+          li
+            /! Inner Menu: contains the notifications
+            ul.menu
+              li
+                /! start notification
+                a href="#"
+                  i.fa.fa-users.text-aqua
+                  | 5 new members joined today
+              /! end notification
+          li.footer
+            a href="#"  View all
+      /! Tasks Menu
+      li.dropdown.tasks-menu
+        /! Menu Toggle Button
+        a.dropdown-toggle data-toggle="dropdown" href="#"
+          i.fa.fa-flag-o
+          span.label.label-danger 9
+        ul.dropdown-menu
+          li.header You have 9 tasks
+          li
+            /! Inner menu: contains the tasks
+            ul.menu
+              li
+                /! Task item
+                a href="#"
+                  /! Task title and progress text
+                h3
+                  | Design some buttons
+                  small.pull-right 20%
+                /! The progress bar
+                .progress.xs
+                  /! Change the css width attribute to simulate progress
+                  .progress-bar.progress-bar-aqua aria-valuemax="100" aria-valuemin="0" aria-valuenow="20" role="progressbar" style=("width: 20%")
+                    span.sr-only 20% Complete
+              /! end task item
+          li.footer
+            a href="#"  View all tasks
+      /! User Account Menu
+      li.dropdown.user.user-menu
+        /! Menu Toggle Button
+        a.dropdown-toggle data-toggle="dropdown" href="#"
+          /! The user image in the navbar
+          img.user-image alt="User Image"
+          /! hidden-xs hides the username on small devices so only the image appears.
+          span.hidden-xs Alexander Pierce
+        ul.dropdown-menu
+          /! The user image in the menu
+          li.user-header
+            img.img-circle alt="User Image"
+            p
+              | Alexander Pierce - Web Developer
+              small Member since Nov. 2012
+          /! Menu Body
+          li.user-body
+            .col-xs-4.text-center
+              a href="#"  Followers
+            .col-xs-4.text-center
+              a href="#"  Sales
+            .col-xs-4.text-center
+              a href="#"  Friends
+          /! Menu Footer
+          li.user-footer
+            .pull-left
+              a.btn.btn-default.btn-flat href="#"  Profile
+            .pull-right
+              a.btn.btn-default.btn-flat href="#"  Sign out
+      /! Control Sidebar Toggle Button
+      li
+        a data-toggle="control-sidebar" href="#"
+          i.fa.fa-gears
+

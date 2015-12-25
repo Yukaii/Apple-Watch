@@ -1,0 +1,56 @@
+.wrapper
+  = render partial: 'admin/partials/header'
+  = render partial: 'admin/partials/sidebar'
+  .content-wrapper
+    section.content-header
+      h1
+        | 所有文章
+        small 目前綜合外電上所有的文章
+      ol.breadcrumb
+        li
+          a href="#"
+            i.fa.fa-dashboard
+            | Level
+        li.active Here
+      .dropdown
+        button class="btn btn-default dropdown-toggle" type="button" id="actionDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+          | 批次動作
+          span.caret
+        ul.dropdown-menu aria-labelledby="actionDropdown"
+          li
+            a href="#" 刪除已選取
+    section.content
+      table.table
+        tr
+          th #
+          th id
+          th 標題
+          th 作者
+          th created_at
+          th published_at
+          th 原文連結
+          th 動作
+        - @articles.each do |article|
+          tr
+            td
+              input type="checkbox"
+            td= link_to article.id, admin_article_path(article)
+            td= article.title
+            td= article.author
+            td= article.created_at
+            td= article.published_at
+            td
+              a href=article.url
+                i.fa.fa-external-link
+            td
+              a href=admin_article_path(article)
+                i.fa.fa-link.iconspan
+              a href=edit_admin_article_path(article)
+                i.fa.fa-pencil-square-o.iconspan
+              a href=admin_article_path(article) data-confirm="你確定要刪除嗎?" data-method="delete"
+                i.fa.fa-trash.iconspan
+
+      = paginate @articles, :outer_window => 3
+
+  = render partial: 'admin/partials/footer'
+  = render partial: 'admin/partials/control_sidebar'
