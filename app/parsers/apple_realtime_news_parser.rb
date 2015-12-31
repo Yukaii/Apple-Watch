@@ -40,8 +40,12 @@ module AppleRealtimeNewsParser
             # parse summary
             summary = page.css("#summary")
             summary.search('br').each {|d| d.replace("\n")}
-            article.content = summary.text.gsub(/\n/, "<br/>")
-            # article.content = summary.to_html.html_safe
+
+            other_contents = page.xpath('//p[@id="summary"]/following-sibling::text()')
+            other_contents.search('br').each {|d| d.replace("\n")}
+
+            article.summary = summary.text.gsub(/\n/, "<br/>")
+            article.content = article.summary + other_contents.map(&:text).join("\n\n").strip.gsub(/\n/, "<br/>")
 
             # parse title
             article.title = page.css('#h1').text

@@ -8,4 +8,8 @@ class Admin::ArticlesController < Admin::BaseController
   def show
     @article = Admin::Article.find(params[:id])
   end
+
+  def edit
+
+  end
 end

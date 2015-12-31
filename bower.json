@@ -1,0 +1,6 @@
+{
+  "name": "41j",
+  "dependencies": {
+    "AdminLTE": "admin-lte#~2.3.2"
+  }
+}

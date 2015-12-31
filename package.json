@@ -1,0 +1,14 @@
+{
+  "name": "41j",
+  "version": "1.0.0",
+  "dependencies": {
+    "bower": "^1.7.2"
+  },
+  "engine": {
+    "node": "5.3.0",
+    "npm": "3.3.12"
+  },
+  "scripts": {
+    "postinstall": "./node_modules/bower/bin/bower install"
+  }
+}
