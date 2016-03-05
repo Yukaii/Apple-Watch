@@ -23,7 +23,6 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem "bower-rails"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -59,6 +58,11 @@ gem 'rails-observers'
 gem 'newrelic_rpm'
 
 gem 'devise'
+
+gem 'sidekiq'
+
+gem 'redis'
+gem 'redis-namespace'
 
 # gem 'rack-google-analytics'
 

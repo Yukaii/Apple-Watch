@@ -12,7 +12,8 @@ class ArticlesController < ApplicationController
 
   def run_parse_task
     if params[:token] == ENV["TASK_TOKEN"]
-      AppleRealtimeNewsParser.parse_article_list(1...6)
+      # AppleRealtimeNewsParser.parse_article_list(1...6)
+      ParseLatestNewsWorker.perform_async
     end
     render(json: { status: "done" }, status: 200)
   end

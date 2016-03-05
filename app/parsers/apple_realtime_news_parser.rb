@@ -16,6 +16,7 @@ module AppleRealtimeNewsParser
       begin
         page = Nokogiri::HTML(http_client.get_content "http://www.appledaily.com.tw/realtimenews/section/new/#{page_count}")
       rescue Exception => e
+        puts e
         return
       end
 
