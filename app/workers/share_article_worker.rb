@@ -5,7 +5,7 @@ class ShareArticleWorker
 
     post_data = {
       "message"     => "\#41J機器人: #{article.title}",
-      "link"        => "#{ENV['DEPLOY_DOMAIN']}#{Rails.application.routes.url_helpers.article_path(article)}",
+      "link"        => article.url,
       "name"        => article.title,
       "description" => article.text_content,
       "caption"     => "#{article.published_at && article.published_at.strftime('%F %T')} #{article.author}",
