@@ -49,8 +49,6 @@ gem 'nokogiri'
 # task runner gem
 gem 'whenever', :require => false
 
-gem 'unicorn'
-
 gem 'bootstrap-sass', '~> 3.3.4'
 
 gem 'rails-observers'
@@ -60,6 +58,8 @@ gem 'newrelic_rpm'
 gem 'devise'
 
 gem 'sidekiq'
+
+gem "passenger"
 
 gem 'redis'
 gem 'redis-namespace'
