@@ -5,6 +5,6 @@
 .container
   .row
     .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
-      = render partial: 'partials/post_preview', collection: @articles, as: :article
+      = render @articles
       = paginate @articles, :outer_window => 3
 = render 'partials/footer'

@@ -2,6 +2,7 @@ class Article < ActiveRecord::Base
   default_scope { order(created_at: :desc) }
   scope :shiyijei, -> { where(author: "施旖婕") }
   scope :today, -> { where('DATE(published_at) = ?', Date.today) }
+  scope :shiyijei_today, -> { shiyijei.today }
 
   def update_apple_popularity
     AppleRealtimeNewsParser.update_popularity(self)

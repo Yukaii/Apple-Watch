@@ -59,7 +59,7 @@ gem 'devise'
 
 gem 'sidekiq'
 
-gem "passenger"
+gem "puma"
 
 gem 'redis'
 gem 'redis-namespace'
@@ -84,10 +84,16 @@ group :development, :test do
 
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+
 end
 
 group :production do
   gem 'pg'
   gem 'rails_12factor'
+  gem 'heroku-deflater'
 end
 
+gem 'rack-mini-profiler', require: false
+gem 'flamegraph'
+gem 'stackprof' # ruby 2.1+ only
+gem 'memory_profiler'

@@ -25,7 +25,7 @@ class ArticlesController < ApplicationController
   end
 
   def today
-    @articles = Article.today.shiyijei.page(params[:page])
+    @articles = Article.shiyijei_today.page(params[:page])
     @headline = "每日的旖婕"
     render 'index'
   end
